@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<link  rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+
+  <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+  <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+  <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+  <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+  <script type="text/javascript" src="apigClient.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+  <div class="col-md-12" style="text-align:center;color:white">
+    <h1>Stock Market Predictor</h1>
+  </div>
+    <div class="col-md-12 selectthecompany">
+    <div class="col-md-9">
+
+      <div class="col-md-3">
+             <!--/sidebar-nav-fixed -->
+             <div class="form-group">
+                 <label style="color:white"for="sel1">Select Company 1</label>
+                 <select class="form-control" id="stockname1">
+                   <option>AAPL</option>
+                   <option>MSFT</option>
+                   <option>GOOGL</option>
+                   <option>TSLA</option>
+                   <option>JPM</option>
+                   <option>TWTR</option>
+                   <option>BMWYY</option>
+                   <option>AUDVF</option>
+                   <option>FB</option>
+                   <option>AMZN</option>
+                 </select>
+               </div>
+          <button type="submit" class="btn btn-primary" id="stock1button" onclick="searchStock1()">Submit</button>
+     </div>
+     <div class="col-md-2">
+        <br>
+      <button type="submit" class="btn btn-primary Comparing" id="Comparing" onclick="compareStock()" disabled>Compare</button>
+            <!--/sidebar-nav-fixed -->
+     </div>
+
+         <div class="col-md-3">
+                <!--/sidebar-nav-fixed -->
+                <div class="form-group">
+                    <label style="color:white"for="sel1">Select Company 2</label>
+                    <select class="form-control .stock2select" id="stockname2" disabled>
+                      <option>AAPL</option>
+                      <option>MSFT</option>
+                      <option>GOOGL</option>
+                      <option>TSLA</option>
+                      <option>JPM</option>
+                      <option>TWTR</option>
+                      <option>BMWYY</option>
+                      <option>AUDVF</option>
+                      <option>FB</option>
+                      <option>AMZN</option>
+                    </select>
+                  </div>
+             <button type="submit" class="btn btn-primary" id="stock2button" onclick="searchStock2()" disabled>Submit</button>
+
+
+        </div>
+</br>
+
+</br>
+
+<!-- <svg id="chart"width="850" height="390"></svg> -->
+
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+          <textarea class="form-control" type="text" id="current_stock_query" placeholder="Ask about stock's current value ..." rows="2"></textarea>
+        </div>
+   <button type="submit" class="btn btn-primary" onclick="getCurrentStock()"="">Submit</button>
+   <br>
+   <br>
+   <div id="current_stock_details">
+
+
+
+
+  </div>
+     </div>
+     </div>
+
+     <div class="col-md-12">
+     <div class="col-md-9">
+<svg id="chart"width="850" height="390"></svg>
+<svg id="chart1" width="850" height="390"></svg>
+     </div>
+   </div>
+
+<div class="col-md-12">
+
+  <div class="col-md-4">
+         <!--/sidebar-nav-fixed -->
+ <div class="scrollnews" style="max-height: 400px;overflow-y: scroll;"></div>
+
+     </div>
+     <div class="col-md-4">
+            <!--/sidebar-nav-fixed -->
+    <div class="scrolltweets" style="max-height: 400px;overflow-y: scroll;"></div>
+
+        </div>
+        <div class="col-md-4">
+               <!--/sidebar-nav-fixed -->
+       <div class="scrollopinion" style="max-height: 400px;overflow-y: scroll;"></div>
+
+           </div>
+</div>
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+  <link href="c3/c3.css" rel="stylesheet">
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="c3/c3.min.js"></script>
+  <script src="app.js"></script>
+  <script src="chart.js"></script>
+</body>
+
+
+</html>
